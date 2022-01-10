@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg'
-import { Container, TransactionTypeContainer } from './styles';
+import { Container, TransactionTypeContainer, RadioBox } from './styles';
 
 interface NewTransactionModalProps {
     isOpen: boolean;
@@ -39,20 +39,23 @@ const [type, setType] = useState('deposit');
                 />
 
                 <TransactionTypeContainer>
-                    <button
+                    <RadioBox
                         type='button'
-                        className={type == 'deposit' ? 'active' : ''}
                         onClick={() => { setType('deposit'); }}
+                        isActive={type === 'deposit'}
+                        activeColor="green"
                     >
                         <span>Entrada</span>
-                    </button>
+                    </RadioBox>
 
-                    <button
+                    <RadioBox
                         type='button'
                         onClick={() => { setType('withdraw'); }}
+                        isActive={type === 'withdraw'}
+                        activeColor="red"
                     >
                         <span>Saída</span>
-                    </button>
+                    </RadioBox>
                 </TransactionTypeContainer>
 
                 <input
